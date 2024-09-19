@@ -1,202 +1,165 @@
-# deepfakes_faceswap
+# **deepfakes_faceswap**
+
 <p align="center">
-  <a href="https://faceswap.dev"><img src="https://i.imgur.com/zHvjHnb.png"></img></a>
-<br />FaceSwap is a tool that utilizes deep learning to recognize and swap faces in pictures and videos.
-</p>
-<p align="center">
-<img src = "https://i.imgur.com/nWHFLDf.jpg"></img>
+  <a href="https://faceswap.dev"><img src="https://i.imgur.com/zHvjHnb.png" alt="FaceSwap Logo"></a>
+<br />FaceSwap ist ein Tool, das Deep Learning verwendet, um Gesichter in Bildern und Videos zu erkennen und auszutauschen.
 </p>
 
 <p align="center">
-<a href="https://www.patreon.com/bePatron?u=23238350"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png"></img></a>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://discord.gg/FC54sYg"><img src="https://i.imgur.com/gIpztkv.png"></img></a></p>
+<img src="https://i.imgur.com/nWHFLDf.jpg" alt="FaceSwap Beispiel"></p>
 
 <p align="center">
-  <a href="https://www.dailymotion.com/video/x810mot"><img src="https://user-images.githubusercontent.com/36920800/178301720-b69841bb-a1ca-4c20-91db-a2a10f5692ca.png"></img></a>
-<br />Emma Stone/Scarlett Johansson FaceSwap using the Phaze-A model
+<a href="https://www.patreon.com/bePatron?u=23238350"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Patreon Support"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://discord.gg/FC54sYg"><img src="https://i.imgur.com/gIpztkv.png" alt="Discord"></a>
 </p>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=r1jng79a5xc"><img src="https://img.youtube.com/vi/r1jng79a5xc/0.jpg"></img></a>
-<br />Jennifer Lawrence/Steve Buscemi FaceSwap using the Villain model
+  <a href="https://www.dailymotion.com/video/x810mot"><img src="https://user-images.githubusercontent.com/36920800/178301720-b69841bb-a1ca-4c20-91db-a2a10f5692ca.png" alt="Emma Stone/Scarlett Johansson FaceSwap"></a>
+<br />Emma Stone/Scarlett Johansson FaceSwap mit dem Phaze-A Modell
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=r1jng79a5xc"><img src="https://img.youtube.com/vi/r1jng79a5xc/0.jpg" alt="Jennifer Lawrence/Steve Buscemi FaceSwap"></a>
+<br />Jennifer Lawrence/Steve Buscemi FaceSwap mit dem Villain Modell
 </p>
 
 ![Build Status](https://github.com/deepfakes/faceswap/actions/workflows/pytest.yml/badge.svg) [![Documentation Status](https://readthedocs.org/projects/faceswap/badge/?version=latest)](https://faceswap.readthedocs.io/en/latest/?badge=latest)
 
-Make sure you check out [INSTALL.md](INSTALL.md) before getting started.
+**Bevor du beginnst, lies bitte [INSTALL.md](INSTALL.md).**
 
 - [deepfakes_faceswap](#deepfakes_faceswap)
 - [Manifesto](#manifesto)
-  - [FaceSwap has ethical uses.](#faceswap-has-ethical-uses)
-- [How To setup and run the project](#how-to-setup-and-run-the-project)
-- [Overview](#overview)
+  - [FaceSwap hat ethische Anwendungsbereiche.](#faceswap-hat-ethische-anwendungsbereiche)
+- [Setup und Ausführung des Projekts](#setup-und-ausführung-des-projekts)
+- [Überblick](#überblick)
   - [Extract](#extract)
   - [Train](#train)
   - [Convert](#convert)
   - [GUI](#gui)
-- [General notes:](#general-notes)
-- [Help I need support!](#help-i-need-support)
-  - [Discord Server](#discord-server)
-  - [FaceSwap Forum](#faceswap-forum)
-- [Donate](#donate)
+- [Allgemeine Hinweise:](#allgemeine-hinweise)
+- [Hilfe! Ich brauche Unterstützung!](#hilfe-ich-brauche-unterstützung)
+  - [Discord-Server](#discord-server)
+  - [FaceSwap-Forum](#faceswap-forum)
+- [Spenden](#spenden)
   - [Patreon](#patreon)
-  - [One time Donations](#one-time-donations)
+  - [Einmalige Spenden](#einmalige-spenden)
     - [@torzdf](#torzdf)
     - [@andenixa](#andenixa)
-- [How to contribute](#how-to-contribute)
-  - [For people interested in the generative models](#for-people-interested-in-the-generative-models)
-  - [For devs](#for-devs)
-  - [For non-dev advanced users](#for-non-dev-advanced-users)
-  - [For end-users](#for-end-users)
-  - [For haters](#for-haters)
-- [About github.com/deepfakes](#about-githubcomdeepfakes)
-  - [What is this repo?](#what-is-this-repo)
-  - [Why this repo?](#why-this-repo)
-  - [Why is it named 'deepfakes' if it is not /u/deepfakes?](#why-is-it-named-deepfakes-if-it-is-not-udeepfakes)
-  - [What if /u/deepfakes feels bad about that?](#what-if-udeepfakes-feels-bad-about-that)
-- [About machine learning](#about-machine-learning)
-  - [How does a computer know how to recognize/shape faces? How does machine learning work? What is a neural network?](#how-does-a-computer-know-how-to-recognizeshape-faces-how-does-machine-learning-work-what-is-a-neural-network)
+- [Wie kann man beitragen?](#wie-kann-man-beitragen)
+  - [Für generative Modell-Interessierte](#für-generative-modell-interessierte)
+  - [Für Entwickler](#für-entwickler)
+  - [Für fortgeschrittene Anwender](#für-fortgeschrittene-anwender)
+  - [Für Endanwender](#für-endanwender)
+  - [Für Kritiker](#für-kritiker)
+- [Über github.com/deepfakes](#über-githubcomdeepfakes)
+  - [Was ist dieses Repo?](#was-ist-dieses-repo)
+  - [Warum dieses Repo?](#warum-dieses-repo)
+  - [Warum heißt es 'deepfakes', wenn es nicht von /u/deepfakes ist?](#warum-heißt-es-deepfakes-wenn-es-nicht-von-udeepfakes-ist)
+  - [Was, wenn /u/deepfakes das stört?](#was-wenn-udeepfakes-das-stört)
+- [Über maschinelles Lernen](#über-maschinelles-lernen)
+  - [Wie erkennt oder formt ein Computer Gesichter? Was ist maschinelles Lernen? Was ist ein neuronales Netzwerk?](#wie-erkennt-oder-formt-ein-computer-gesichter-was-ist-maschinelles-lernen-was-ist-ein-neuronales-netzwerk)
 
-# Manifesto
+# 📜 Manifesto
 
-## FaceSwap has ethical uses.
+## FaceSwap hat ethische Anwendungsbereiche.
 
-When faceswapping was first developed and published, the technology was groundbreaking, it was a huge step in AI development. It was also completely ignored outside of academia because the code was confusing and fragmentary. It required a thorough understanding of complicated AI techniques and took a lot of effort to figure it out. Until one individual brought it together into a single, cohesive collection. It ran, it worked, and as is so often the way with new technology emerging on the internet, it was immediately used to create inappropriate content. Despite the inappropriate uses the software was given originally, it was the first AI code that anyone could download, run and learn by experimentation without having a Ph.D. in math, computer theory, psychology, and more. Before "deepfakes" these techniques were like black magic, only practiced by those who could understand all of the inner workings as described in esoteric and endlessly complicated books and papers.
+Als FaceSwapping erstmals entwickelt wurde, war es eine bahnbrechende Technologie, ein großer Schritt in der KI-Entwicklung. Leider wurde es von einigen für unangemessene Zwecke verwendet. Trotz dieser problematischen Anwendungen war es der erste KI-Code, den jeder herunterladen und durch Experimentieren ohne tiefgehende mathematische oder theoretische Kenntnisse nutzen konnte.
 
-"Deepfakes" changed all that and anyone could participate in AI development. To us, developers, the release of this code opened up a fantastic learning opportunity. It allowed us to build on ideas developed by others, collaborate with a variety of skilled coders, experiment with AI whilst learning new skills and ultimately contribute towards an emerging technology which will only see more mainstream use as it progresses.
+Heutzutage wird FaceSwap von Entwicklern genutzt, um KI-Techniken zu erforschen und zu experimentieren. Auch wenn die Software missbraucht werden kann, liegt der Fokus der Entwickler auf ethischen Anwendungsbereichen wie Filmen, sozialen Kommentaren und Experimenten.
 
-Are there some out there doing horrible things with similar software? Yes. And because of this, the developers have been following strict ethical standards. Many of us don't even use it to create videos, we just tinker with the code to see what it does. Sadly, the media concentrates only on the unethical uses of this software. That is, unfortunately, the nature of how it was first exposed to the public, but it is not representative of why it was created, how we use it now, or what we see in its future. Like any technology, it can be used for good or it can be abused. It is our intention to develop FaceSwap in a way that its potential for abuse is minimized whilst maximizing its potential as a tool for learning, experimenting and, yes, for legitimate faceswapping.
+- FaceSwap ist **nicht** für unangemessene Inhalte.
+- FaceSwap ist **nicht** zum heimlichen Ändern von Gesichtern ohne Zustimmung.
+- FaceSwap ist **nicht** für illegale oder unethische Zwecke.
 
-We are not trying to denigrate celebrities or to demean anyone. We are programmers, we are engineers, we are Hollywood VFX artists, we are activists, we are hobbyists, we are human beings. To this end, we feel that it's time to come out with a standard statement of what this software is and isn't as far as us developers are concerned.
+# 🛠️ Setup und Ausführung des Projekts
 
-- FaceSwap is not for creating inappropriate content.
-- FaceSwap is not for changing faces without consent or with the intent of hiding its use.
-- FaceSwap is not for any illicit, unethical, or questionable purposes.
-- FaceSwap exists to experiment and discover AI techniques, for social or political commentary, for movies, and for any number of ethical and reasonable uses.
+FaceSwap ist ein Python-Programm, das auf Windows, Linux und macOS läuft. Für die beste Leistung wird eine moderne GPU mit CUDA-Unterstützung empfohlen.
 
-We are very troubled by the fact that FaceSwap can be used for unethical and disreputable things. However, we support the development of tools and techniques that can be used ethically as well as provide education and experience in AI for anyone who wants to learn it hands-on. We will take a zero tolerance approach to anyone using this software for any unethical purposes and will actively discourage any such uses.
+Weitere Anweisungen findest du in [INSTALL.md](INSTALL.md).
 
-# How To setup and run the project
-FaceSwap is a Python program that will run on multiple Operating Systems including Windows, Linux, and MacOS.
+# 🗂️ Überblick
 
-See [INSTALL.md](INSTALL.md) for full installation instructions. You will need a modern GPU with CUDA support for best performance. Many AMD GPUs are supported through DirectML (Windows) and ROCm (Linux).
+Das Projekt umfasst mehrere Hauptschritte:
+- **Bilder und Videos sammeln**
+- **Extract**: Gesichter aus Fotos extrahieren
+- **Train**: Ein Modell auf den extrahierten Gesichtern trainieren
+- **Convert**: Neue Gesichter in die Quellbilder einfügen
 
-# Overview
-The project has multiple entry points. You will have to:
- - Gather photos and/or videos
- - **Extract** faces from your raw photos
- - **Train** a model on the faces extracted from the photos/videos
- - **Convert** your sources with the model
-
-Check out [USAGE.md](USAGE.md) for more detailed instructions.
+Schau dir [USAGE.md](USAGE.md) für detaillierte Anweisungen an.
 
 ## Extract
-From your setup folder, run `python faceswap.py extract`. This will take photos from `src` folder and extract faces into `extract` folder.
+Verwende `python faceswap.py extract`, um Gesichter aus Bildern zu extrahieren.
 
 ## Train
-From your setup folder, run `python faceswap.py train`. This will take photos from two folders containing pictures of both faces and train a model that will be saved inside the `models` folder.
+Verwende `python faceswap.py train`, um ein Modell zu trainieren.
 
 ## Convert
-From your setup folder, run `python faceswap.py convert`. This will take photos from `original` folder and apply new faces into `modified` folder.
+Verwende `python faceswap.py convert`, um Gesichter zu konvertieren.
 
 ## GUI
-Alternatively, you can run the GUI by running `python faceswap.py gui`
+Du kannst alternativ die GUI verwenden, indem du `python faceswap.py gui` ausführst.
 
-# General notes:
-- All of the scripts mentioned have `-h`/`--help` options with arguments that they will accept. You're smart, you can figure out how this works, right?!
+# 📝 Allgemeine Hinweise:
 
-NB: there is a conversion tool for video. This can be accessed by running `python tools.py effmpeg -h`. Alternatively, you can use [ffmpeg](https://www.ffmpeg.org) to convert video into photos, process images, and convert images back to the video.
+Alle Skripte haben `-h`/`--help` Optionen, um Argumente anzuzeigen. Es gibt auch ein Video-Konvertierungstool, das über `python tools.py effmpeg -h` aufgerufen werden kann.
 
+# ❓ Hilfe! Ich brauche Unterstützung!
 
-**Some tips:**
+## Discord-Server
+Der beste Ort, um Unterstützung zu erhalten, ist der [FaceSwap Discord-Server](https://discord.gg/FC54sYg).
 
-Reusing existing models will train much faster than starting from nothing.
-If there is not enough training data, start with someone who looks similar, then switch the data.
+## FaceSwap-Forum
+Alternativ kannst du Fragen im [FaceSwap-Forum](https://faceswap.dev/forum) stellen.
 
-# Help I need support!
-## Discord Server
-Your best bet is to join the [FaceSwap Discord server](https://discord.gg/FC54sYg) where there are plenty of users willing to help. Please note that, like this repo, this is a SFW Server!
+# 💰 Spenden
 
-## FaceSwap Forum
-Alternatively, you can post questions in the [FaceSwap Forum](https://faceswap.dev/forum). Please do not post general support questions in this repo as they are liable to be deleted without response.
-
-# Donate
-The developers work tirelessly to improve and develop FaceSwap. Many hours have been put in to provide the software as it is today, but this is an extremely time-consuming process with no financial reward. If you enjoy using the software, please consider donating to the devs, so they can spend more time implementing improvements.
+Die Entwickler investieren viel Zeit in die Verbesserung von FaceSwap. Wenn dir das Programm gefällt, ziehe bitte eine Spende in Betracht.
 
 ## Patreon
-The best way to support us is through our Patreon page:
+Unterstütze uns über unsere [Patreon-Seite](https://www.patreon.com/bePatron?u=23238350).
 
-[![become-a-patron](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=23238350)
+## Einmalige Spenden
 
-## One time Donations
-Alternatively you can give a one off donation to any of our Devs:
 ### @torzdf
- There is very little FaceSwap code that hasn't been touched by torzdf. He is responsible for implementing the GUI, FAN aligner, MTCNN detector and porting the Villain, DFL-H128 and DFaker models to FaceSwap, as well as significantly improving many areas of the code.
-
-**Bitcoin:** bc1qpm22suz59ylzk0j7qk5e4c7cnkjmve2rmtrnc6
-
-**Ethereum:** 0xd3e954dC241B87C4E8E1A801ada485DC1d530F01
-
-**Monero:** 45dLrtQZ2pkHizBpt3P3yyJKkhcFHnhfNYPMSnz3yVEbdWm3Hj6Kr5TgmGAn3Far8LVaQf1th2n3DJVTRkfeB5ZkHxWozSX
-
-**Paypal:** [![torzdf](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JZ8PP3YE9J62L)
+**Bitcoin:** bc1qpm22suz59ylzk0j7qk5e4c7cnkjmve2rmtrnc6  
+**Ethereum:** 0xd3e954dC241B87C4E8E1A801ada485DC1d530F01  
+**Paypal:** [Spenden](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JZ8PP3YE9J62L)
 
 ### @andenixa
-Creator of the Unbalanced and OHR models, as well as expanding various capabilities within the training process. Andenixa is currently working on new models and will take requests for donations.
+**Paypal:** [Spenden](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NRVLQYGS6NWTU)
 
-**Paypal:** [![andenixa](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NRVLQYGS6NWTU)
+# 👨‍💻 Wie kann man beitragen?
 
-# How to contribute
+## Für generative Modell-Interessierte
+- Diskutiere im 'faceswap-model'-Bereich Alternativen zum aktuellen Algorithmus.
 
-## For people interested in the generative models
- - Go to the 'faceswap-model' to discuss/suggest/commit alternatives to the current algorithm.
+## Für Entwickler
+- Forke das Repo und experimentiere damit.
+- Schau dir Issues mit dem 'dev'-Tag an.
 
-## For devs
- - Read this README entirely
- - Fork the repo
- - Play with it
- - Check issues with the 'dev' tag
- - For devs more interested in computer vision and openCV, look at issues with the 'opencv' tag. Also feel free to add your own alternatives/improvements
+## Für fortgeschrittene Anwender
+- Klone das Repo und spiele damit herum.
+- Unterstütze andere im [FaceSwap-Forum](https://faceswap.dev/forum).
 
-## For non-dev advanced users
- - Read this README entirely
- - Clone the repo
- - Play with it
- - Check issues with the 'advuser' tag
- - Also go to the '[faceswap Forum](https://faceswap.dev/forum)' and help others.
+## Für Endanwender
+- Lade den Code herunter und experimentiere.
+- Sei geduldig, diese Technologie ist noch neu!
 
-## For end-users
- - Get the code here and play with it if you can
- - You can also go to the [faceswap Forum](https://faceswap.dev/forum) and help or get help from others.
- - Be patient. This is a relatively new technology for developers as well. Much effort is already being put into making this program easy to use for the average user. It just takes time!
- - **Notice** Any issue related to running the code has to be opened in the [faceswap Forum](https://faceswap.dev/forum)!
+# 🤖 Über github.com/deepfakes
 
-## For haters
-Sorry, no time for that.
+## Was ist dieses Repo?
+Es ist ein Community-Repository für aktive Benutzer.
 
-# About github.com/deepfakes
+## Warum dieses Repo?
+Das joshua-wu-Repo scheint inaktiv zu sein, daher wurde dieses geschaffen.
 
-## What is this repo?
-It is a community repository for active users.
+# 💡 Über maschinelles Lernen
 
-## Why this repo?
-The joshua-wu repo seems not active. Simple bugs like missing _http://_ in front of urls have not been solved since days.
+## Wie funktioniert maschinelles Lernen und was ist ein neuronales Netzwerk?
+Es ist kompliziert. Hier ist ein hilfreiches Video:
+[![Wie Maschinen lernen](https://img.youtube.com/vi/R9OHn5ZF4Uo/0.jpg)](https://www.youtube.com/watch?v=R
 
-## Why is it named 'deepfakes' if it is not /u/deepfakes?
- 1. Because a typosquat would have happened sooner or later as project grows
- 2. Because we wanted to recognize the original author
- 3. Because it will better federate contributors and users
+9OHn5ZF4Uo)
 
-## What if /u/deepfakes feels bad about that?
-This is a friendly typosquat, and it is fully dedicated to the project. If /u/deepfakes wants to take over this repo/user and drive the project, he is welcomed to do so (Raise an issue, and he will be contacted on Reddit). Please do not send /u/deepfakes messages for help with the code you find here.
-
-# About machine learning
-
-## How does a computer know how to recognize/shape faces? How does machine learning work? What is a neural network?
-It's complicated. Here's a good video that makes the process understandable:
-[![How Machines Learn](https://img.youtube.com/vi/R9OHn5ZF4Uo/0.jpg)](https://www.youtube.com/watch?v=R9OHn5ZF4Uo)
-
-Here's a slightly more in depth video that tries to explain the basic functioning of a neural network:
-[![How Machines Learn](https://img.youtube.com/vi/aircAruvnKk/0.jpg)](https://www.youtube.com/watch?v=aircAruvnKk)
-
-tl;dr: training data + trial and error
+Mehr Details hier:
+[![Neuronale Netzwerke erklärt](https://img.youtube.com/vi/aircAruvnKk/0.jpg)](https://www.youtube.com/watch?v=aircAruvnKk)
